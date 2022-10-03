@@ -20,39 +20,30 @@ type Token @entity {
   knits: [Knit!]! @derivedFrom(field: "token")
   mirrors: [Mirror!]! @derivedFrom(field: "token")
   burns: [Burn!]! @derivedFrom(field: "token")
-
 }
 
-# users
-
+# created 
 type User @entity {
-  id: ID!
-  #images: [Image!]! @derivedFrom(field: "user") # active images to show
-  positions: [ImagePosition!]! @derivedFrom(field: "user") # active images to show
+  id: ID! # user address
+  positions: [ImagePosition!]! @derivedFrom(field: "user")
   knits: [Knit!]! @derivedFrom(field: "user")
   mirrors: [Mirror!]! @derivedFrom(field: "user")
   burns: [Burn!]! @derivedFrom(field: "user")
 }
 
 # interactions
-# we want to store active images
-# basically we want to store image hashes where the provenanceCount is > 0
-
-# say we have a token page. we want to show all active images for that contract
 type Image @entity {
   id: ID! # image hash
   token: Token!
-  creator: User! # image creator
+  creator: User! 
   imageURI: String!
-  timestamp: BigInt! # image creation timestamp
-  # user: User! # owner of the image
+  timestamp: BigInt!
   positions: [ImagePosition!]! @derivedFrom(field: "image")
-  # owners: [Bytes!]! # list of all owners of the image
   provenanceCount: BigInt!
 }
 
 type ImagePosition @entity {
-  id: ID! # concat image hash + user address + token + token Id
+  id: ID! # image hash + user address + token + token Id
   image: Image!
   token: Token!
   tokenId: BigInt!
@@ -61,82 +52,40 @@ type ImagePosition @entity {
   active: Boolean!
 }
 
-# for a given user, they have any number of "positions"
-# a position represents their ownership of an image from a token contract
-# for a given token, we show a list of images
-# for a given image, we show a list of positions
-# we're only going to show the addresses of owners of active positions
-# we'll also have data on past positions, but we don't need to show those
-
 # events
-# the events should ONLY be used to update the image field
-
 type Knit @entity {
   id: ID!
   blockNumber: BigInt!
   timestamp: BigInt!
-  token: Token! # address
-  tokenId: BigInt! # uint256
-  user: User! # knitter
-  imageHash: Bytes! # image hash
+  token: Token! 
+  tokenId: BigInt! 
+  user: User! 
+  imageHash: Bytes! 
   imageURI: String!
-  price: BigInt! # uint256
+  price: BigInt! 
 }
 
 type Mirror @entity {
   id: ID!
   blockNumber: BigInt!
   timestamp: BigInt!
-  token: Token! # address
-  tokenId: BigInt! # uint256
-  user: User! # mirrorer
+  token: Token! 
+  tokenId: BigInt!
+  user: User!
   imageHash: Bytes!
   imageURI: String!
-  price: BigInt! # uint256
+  price: BigInt!
 }
 
 type Burn @entity {
   id: ID!
   blockNumber: BigInt!
   timestamp: BigInt!
-  token: Token! # address
-  tokenId: BigInt! # uint256
-  user: User! # burner
+  token: Token! 
+  tokenId: BigInt! 
+  user: User! 
   imageHash: Bytes!
   imageURI: String!
-  price: BigInt! # uint256
+  price: BigInt! 
 }
 
-# # events
-
-# type Knitted @entity {
-#   id: ID!
-#   blockNumber: BigInt!
-#   timestamp: BigInt!
-#   token: Bytes! # address
-#   tokenId: BigInt! # uint256
-#   user: Bytes! # knitter
-#   imageURI: String!
-#   price: BigInt! # uint256
-# }
-
-# type Mirrored @entity {
-#   id: ID!
-#   blockNumber: BigInt!
-#   timestamp: BigInt!
-#   token: Bytes! # address
-#   tokenId: BigInt! # uint256
-#   user: Bytes! # mirrorer
-#   imageHash: Bytes!
-#   price: BigInt! # uint256
-# }
-
-# type Burned @entity {
-#   id: ID!
-#   blockNumber: BigInt!
-#   timestamp: BigInt!
-#   token: Bytes! # address
-#   tokenId: BigInt! # uint256
-#   user: Bytes! # burner
-#   price: BigInt! # uint256
-# }
