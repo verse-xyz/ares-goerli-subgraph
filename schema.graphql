@@ -1,7 +1,5 @@
-type HyperimageDeployed @entity {
+type Factory @entity {
   id: ID!
-  token: Bytes! # address
-  image: Bytes! # address
 }
 
 type Initialized @entity {
