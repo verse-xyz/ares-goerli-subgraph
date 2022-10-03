@@ -1,0 +1,10 @@
+type HyperimageDeployed @entity {
+  id: ID!
+  token: Bytes! # address
+  image: Bytes! # address
+}
+
+type Initialized @entity {
+  id: ID!
+  version: BigInt! # uint256
+}
