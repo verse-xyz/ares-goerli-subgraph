@@ -8,3 +8,95 @@ type Initialized @entity {
   id: ID!
   version: BigInt! # uint256
 }
+
+type Token @entity {
+  # address
+  id: ID!
+
+  # mirrored from smart contract
+  name: String!
+  image: Bytes!
+  creator: Bytes!
+  targetPrice: BigInt!
+  priceDecayPercent: BigInt!
+  perTimeUnit: BigInt!
+  totalMinted: BigInt!
+  circulatingSupply: BigInt!
+
+  # derived fields
+  knits: [Knit!]! @derivedFrom(field: "token")
+  mirrors: [Mirror!]! @derivedFrom(field: "token")
+  burns: [Burn!]! @derivedFrom(field: "token")
+
+}
+
+# users
+
+type User @entity {
+  id: ID!
+  knits: [Knit!]! @derivedFrom(field: "user")
+  mirrors: [Mirror!]! @derivedFrom(field: "user")
+  burns: [Burn!]! @derivedFrom(field: "user")
+}
+
+# interactions
+
+type Knit @entity {
+  id: ID!
+  token: Token!
+  tokenId: BigInt!
+  user: User!
+  imageURI: String!
+  price: BigInt!
+}
+
+type Mirror @entity {
+  id: ID!
+  token: Token!
+  tokenId: BigInt!
+  user: User!
+  imageHash: Bytes!
+  price: BigInt!
+}
+
+type Burn @entity {
+  id: ID!
+  token: Token!
+  tokenId: BigInt!
+  user: User!
+  price: BigInt!
+}
+
+# events
+
+type Knitted @entity {
+  id: ID!
+  blockNumber: BigInt!
+  timestamp: BigInt!
+  token: Bytes! # address
+  tokenId: BigInt! # uint256
+  user: Bytes! # knitter
+  imageURI: String!
+  price: BigInt! # uint256
+}
+
+type Mirrored @entity {
+  id: ID!
+  blockNumber: BigInt!
+  timestamp: BigInt!
+  token: Bytes! # address
+  tokenId: BigInt! # uint256
+  user: Bytes! # mirrorer
+  imageHash: Bytes!
+  price: BigInt! # uint256
+}
+
+type Burned @entity {
+  id: ID!
+  blockNumber: BigInt!
+  timestamp: BigInt!
+  token: Bytes! # address
+  tokenId: BigInt! # uint256
+  user: Bytes! # burner
+  price: BigInt! # uint256
+}
