@@ -169,15 +169,6 @@ export class Token extends Entity {
     this.set("perTimeUnit", Value.fromBigInt(value));
   }
 
-  get totalMinted(): BigInt {
-    let value = this.get("totalMinted");
-    return value!.toBigInt();
-  }
-
-  set totalMinted(value: BigInt) {
-    this.set("totalMinted", Value.fromBigInt(value));
-  }
-
   get circulatingSupply(): BigInt {
     let value = this.get("circulatingSupply");
     return value!.toBigInt();

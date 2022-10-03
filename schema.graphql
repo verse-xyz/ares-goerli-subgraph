@@ -18,7 +18,6 @@ type Token @entity {
   targetPrice: BigInt!
   priceDecayPercent: BigInt!
   perTimeUnit: BigInt!
-  totalMinted: BigInt!
   circulatingSupply: BigInt!
 
   # derived fields
