@@ -56,6 +56,5 @@ templates:
           handler: handleMirror
         - event: Burned(uint256,address,bytes32,string,uint256)
           handler: handleBurn
-        - event: Redeemed(address,uint256)
-          handler: handleRedeem
+
 
