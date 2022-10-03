@@ -1,7 +1,7 @@
 specVersion: 0.0.4
 description: ARES protocol by Verse
 schema:
-  file: ./schema.graphql
+  file: schema.graphql
 dataSources:
   - kind: ethereum
     name: Factory
@@ -18,17 +18,17 @@ dataSources:
         - HyperimageDeployed
       abis:
         - name: Factory
-          file: ./abis/Factory.json
+          file: Factory/abis/Factory.json
         - name: Token
-          file: ./abis/Token.json
+          file: Factory/abis/Token.json
         - name: Image
-          file: ./abis/Image.json
+          file: Factory/abis/Image.json
         - name: UniversalImageStorage
-          file: ./abis/UniversalImageStorage.json
+          file: Factory/abis/UniversalImageStorage.json
       eventHandlers:
         - event: HyperimageDeployed(address,address)
           handler: handleHyperimageDeployed
-      file: ./src/mappings/factory.ts
+      file: Factory/Factory.wasm
 templates:
   - kind: ethereum/contract
     name: Token
@@ -39,16 +39,16 @@ templates:
       kind: ethereum/events
       apiVersion: 0.0.6
       language: wasm/assemblyscript
-      file: ./src/mappings/core.ts
+      file: templates/Token/Token.wasm
       entities:
         - Token
       abis:
         - name: Token
-          file: ./abis/token.json
+          file: Token/abis/token.json
         - name: Factory
-          file: ./abis/factory.json
+          file: Token/abis/factory.json
         - name: Image
-          file: ./abis/image.json
+          file: Token/abis/image.json
       eventHandlers:
         - event: Knitted(uint256,address,bytes32,string,uint256)
           handler: handleKnit
@@ -56,5 +56,3 @@ templates:
           handler: handleMirror
         - event: Burned(uint256,address,bytes32,string,uint256)
           handler: handleBurn
-
-
