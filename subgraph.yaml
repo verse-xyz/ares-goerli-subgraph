@@ -7,9 +7,9 @@ dataSources:
     name: Factory
     network: goerli
     source:
-      address: "0x6cb65249ca0309E79797e2955D20f958Fab6E658"
+      address: "0x0eF9f82D527b5d02bD2433e66253C686Db770C33"
       abi: Factory
-      startBlock: 7702284
+      startBlock: 7705017
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.6
@@ -50,12 +50,12 @@ templates:
         - name: Image
           file: ./abis/image.json
       eventHandlers:
-        - event: Knitted(uint256,address,string,uint256)
+        - event: Knitted(uint256,address,bytes32,string,uint256)
           handler: handleKnit
-        - event: Mirrored(uint256,address,bytes32,uint256)
+        - event: Mirrored(uint256,address,bytes32,string,uint256)
           handler: handleMirror
-        - event: Burned(uint256,uint256)
+        - event: Burned(uint256,address,bytes32,string,uint256)
           handler: handleBurn
-        - event: Redeemed(uint256)
+        - event: Redeemed(address,uint256)
           handler: handleRedeem
 

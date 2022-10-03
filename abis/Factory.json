@@ -1,9 +1,29 @@
 [
-  { "inputs": [], "name": "ADDRESS_ZERO", "type": "error" },
-  { "inputs": [], "name": "ALREADY_INITIALIZED", "type": "error" },
-  { "inputs": [], "name": "INITIALIZING", "type": "error" },
-  { "inputs": [], "name": "INVALID_TOKEN_PARAMS", "type": "error" },
-  { "inputs": [], "name": "NOT_INITIALIZING", "type": "error" },
+  {
+    "inputs": [],
+    "name": "ADDRESS_ZERO",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "ALREADY_INITIALIZED",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "INITIALIZING",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "INVALID_TOKEN_PARAMS",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "NOT_INITIALIZING",
+    "type": "error"
+  },
   {
     "anonymous": false,
     "inputs": [
@@ -40,14 +60,26 @@
     "inputs": [
       {
         "components": [
-          { "internalType": "bytes", "name": "initStrings", "type": "bytes" },
-          { "internalType": "int256", "name": "targetPrice", "type": "int256" },
+          {
+            "internalType": "bytes",
+            "name": "initStrings",
+            "type": "bytes"
+          },
+          {
+            "internalType": "int256",
+            "name": "targetPrice",
+            "type": "int256"
+          },
           {
             "internalType": "int256",
             "name": "priceDecayPercent",
             "type": "int256"
           },
-          { "internalType": "int256", "name": "perTimeUnit", "type": "int256" }
+          {
+            "internalType": "int256",
+            "name": "perTimeUnit",
+            "type": "int256"
+          }
         ],
         "internalType": "struct IFactory.TokenParams",
         "name": "_tokenParams",
@@ -56,19 +88,35 @@
     ],
     "name": "deploy",
     "outputs": [
-      { "internalType": "address", "name": "token", "type": "address" },
-      { "internalType": "address", "name": "image", "type": "address" }
+      {
+        "internalType": "address",
+        "name": "token",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "image",
+        "type": "address"
+      }
     ],
     "stateMutability": "nonpayable",
     "type": "function"
   },
   {
     "inputs": [
-      { "internalType": "address", "name": "_token", "type": "address" }
+      {
+        "internalType": "address",
+        "name": "_token",
+        "type": "address"
+      }
     ],
     "name": "getAddresses",
     "outputs": [
-      { "internalType": "address", "name": "image", "type": "address" }
+      {
+        "internalType": "address",
+        "name": "image",
+        "type": "address"
+      }
     ],
     "stateMutability": "view",
     "type": "function"
@@ -76,14 +124,28 @@
   {
     "inputs": [],
     "name": "imageImpl",
-    "outputs": [{ "internalType": "address", "name": "", "type": "address" }],
+    "outputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
+    ],
     "stateMutability": "view",
     "type": "function"
   },
   {
     "inputs": [
-      { "internalType": "address", "name": "_token", "type": "address" },
-      { "internalType": "address", "name": "_image", "type": "address" },
+      {
+        "internalType": "address",
+        "name": "_token",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "_image",
+        "type": "address"
+      },
       {
         "internalType": "address",
         "name": "_universalImageStorage",
@@ -97,24 +159,46 @@
   },
   {
     "inputs": [
-      { "internalType": "address", "name": "_address", "type": "address" }
+      {
+        "internalType": "address",
+        "name": "_address",
+        "type": "address"
+      }
     ],
     "name": "isAuthorized",
-    "outputs": [{ "internalType": "bool", "name": "", "type": "bool" }],
+    "outputs": [
+      {
+        "internalType": "bool",
+        "name": "",
+        "type": "bool"
+      }
+    ],
     "stateMutability": "view",
     "type": "function"
   },
   {
     "inputs": [],
     "name": "tokenImpl",
-    "outputs": [{ "internalType": "address", "name": "", "type": "address" }],
+    "outputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
+    ],
     "stateMutability": "view",
     "type": "function"
   },
   {
     "inputs": [],
     "name": "universalImageStorage",
-    "outputs": [{ "internalType": "address", "name": "", "type": "address" }],
+    "outputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
+    ],
     "stateMutability": "view",
     "type": "function"
   }

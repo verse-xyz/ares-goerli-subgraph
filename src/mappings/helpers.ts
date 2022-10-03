@@ -1,4 +1,4 @@
-import { log, BigInt, BigDecimal, Address } from '@graphprotocol/graph-ts'
+import { log, BigInt, BigDecimal, Address, Bytes } from '@graphprotocol/graph-ts'
 import { Token, User } from "../../generated/schema"
 
 export const ADDRESS_ZERO = '0x0000000000000000000000000000000000000000'
@@ -17,3 +17,4 @@ export function setUser(userAddress: Address): void {
     user.save()
   }
 }
+
